@@ -22,7 +22,7 @@ const galleryImages = [
   },
   {
     src: gallery3,
-    alt: "Fresh Strawberry & Greens Salad",
+    alt: "Classic Apple Pie",
     span: "col-span-1", 
   },
   {
