@@ -56,7 +56,10 @@ const Footer = () => {
       <div 
        className="flex flex-col items-center justify-between gap-8 px-6 pt-6 mt-10 border-t border-gray-300/30 max-w-6xl mx-auto md:flex-row">
         <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">
-          © 2024 Ilham Bouktir. All rights reserved.
+          © 2024 
+          <a href="https://ilham-bouk.github.io/ilhambouktir/" target='_blank'
+          className='font-semibold text-gray-600'> Ilham Bouktir </a>
+          . All rights reserved.
         </p>
         <div className="flex gap-4">
           {[Facebook, Instagram, Twitter].map((Icon, idx) => (

@@ -23,7 +23,7 @@ Visitors can explore a categorized menu with mouth-watering dishes, discover wha
 
 ### Preview
 
-![TrueCuisine Mockup](src/assets/thumbnail.png)
+![TrueCuisine Mockup](src/assets/Mockup.png)
 
 ### Live Demo
 
