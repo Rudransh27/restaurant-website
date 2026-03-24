@@ -1,201 +1,94 @@
-import { useState } from 'react';
-import { Utensils, Soup, Flame, Beef, Salad, EggFried, Fish, CakeSlice, Hamburger } from 'lucide-react';
-import item1 from '../assets/item1.jpg'
-import item2 from '../assets/item2.jpg'
-import item3 from '../assets/item3.jpg'
-import item4 from '../assets/item4.jpg'
-import item5 from '../assets/item5.jpg'
-import item6 from '../assets/item6.jpg'
-import item7 from '../assets/item7.jpg'
-import item8 from '../assets/item8.jpg'
-import item9 from '../assets/item9.jpg'
-import item10 from '../assets/item10.jpg'
-import item11 from '../assets/item11.jpg'
-import item12 from '../assets/item12.jpg'
-
-const categories = [
-  { id: 'popular', name: 'Popular', icon: <Flame size={16} /> },
-  { id: 'breakfast', name: 'Breakfast', icon: <EggFried size={16} /> },
-  { id: 'soups', name: 'Soups', icon: <Soup size={16} /> },
-  { id: 'salads', name: 'Salads', icon: <Salad size={16} /> },
-  { id: 'burgers', name: 'Burgers', icon: <Hamburger size={16} /> },
-  { id: 'steaks', name: 'Steaks', icon: <Beef size={16} /> },
-  { id: 'seafood', name: 'Seafood', icon: <Fish size={16} /> },
-  { id: 'desserts', name: 'Desserts', icon: <CakeSlice size={16} /> },
-  { id: 'sides', name: 'Sides', icon: <Utensils size={16} /> },
-];
-
-const allMenuItems = [
-  {
-    id: 1,
-    category: 'breakfast',
-    isPopular: true,
-    title: 'Pancakes',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ratione quo, iusto earum',
-    image: item1,
-  },
-  {
-    id: 2,
-    category: 'soups',
-    isPopular: true,
-    title: 'Boston Clam Chowder',
-    desc: 'Creamy, rich chowder packed with fresh clams, potatoes, and celery. Served with oyster crackers.',
-    image: item2,
-  },
-  {
-    id: 3,
-    category: 'soups',
-    isPopular: false,
-    title: 'Tomato Basil Bisque',
-    desc: 'Smooth roasted tomato soup with fresh basil and a hint of cream. Perfect for dipping grilled cheese.',
-    image: item3,
-  },
-  {
-    id: 4,
-    category: 'salads',
-    isPopular: true,
-    title: 'Greek',
-    desc:  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ratione quo, iusto earum',
-    image: item4,
-  },
-  {
-    id: 5,
-    category: 'burgers',
-    isPopular: true,
-    title: 'Classic Cheeseburger',
-    desc: 'Juicy angus beef patty topped with melted cheddar, crisp lettuce, tomato, and our secret house sauce.',
-    image: item5,
-  },
-  {
-    id: 6,
-    category: 'seafood',
-    isPopular: false,
-    title: 'Fried Fish',
-    desc:  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ratione quo, iusto earum',
-    image: item6,
-  },
-  {
-    id: 7,
-    category: 'seafood',
-    isPopular: false,
-    title: 'Grilled Salmon',
-    desc:  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ratione quo, iusto earum',
-    image: item7,
-  },
-  {
-    id: 8,
-    category: 'desserts',
-    isPopular: true,
-    title: 'Apple Pie',
-    desc: 'Classic American dessert with spiced apple filling in a flaky buttery crust.',
-    image: item8,
-  },
-  {
-    id: 9,
-    category: 'desserts',
-    isPopular: false,
-    title: 'Chocolate Cake',
-    desc: 'Warm chocolate cake with a gooey center, served with vanilla bean ice cream.',
-    image: item9,
-  },
-  {
-    id: 10,
-    category: 'sides',
-    isPopular: false,
-    title: 'French Fries',
-    desc:  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ratione',
-    image: item10,
-  },
-  {
-    id: 11,
-    category: 'sides',
-    isPopular: false,
-    title: 'Mashed Potatos',
-    desc:  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ratione',
-    image: item11,
-  },
-  {
-    id: 12,
-    category: 'sides',
-    isPopular: false,
-    title: 'Battered Onion Rings',
-    desc:  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ratione',
-    image: item12,
-  },
-];
-
-// --- Components ---
-
-const CategoryPill = ({ name, icon, isActive, onClick }) => (
-  <button 
-  onClick={onClick}
-  className={`flex items-center gap-3 px-4 py-3 transition-all shadow-sm rounded-xl border
-    ${isActive 
-      ? 'bg-purple-800 text-white shadow-md scale-105 border-purple-800' 
-      : 'bg-white text-gray-800 hover:shadow-md hover:scale-105 hover:border-purple-200 border-transparent'
-    }`} >
-    <div className={`flex items-center justify-center w-10 h-10 overflow-hidden rounded-full 
-    ${isActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-orange-600'}`}>
-      {icon}
-    </div>
-    <span className="font-semibold">{name}</span>
-  </button>
-);
-
-const MenuItemCard = ({ title, desc, image }) => (
-  <div className="flex flex-col h-full overflow-hidden transition-all duration-300 bg-white rounded-2xl hover:-translate-y-2 hover:shadow-xl group animate-fade-in">
-    <div className="h-56 overflow-hidden">
-      <img 
-      src={image} 
-      alt={title} 
-      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />
-    </div>
-    <div className="flex flex-col grow p-6">
-      <h3 className="mb-2 text-xl font-bold text-gray-900">{title}</h3>
-      <p className="grow text-sm leading-relaxed text-gray-600">{desc}</p>
-    </div>
-  </div>
-);
+import React, { useState } from 'react';
+import { RAJWADA_100_ITEMS } from './menuData';
 
 const Menu = () => {
-  // State to track the active category
-  const [activeCategory, setActiveCategory] = useState('popular');
+  const [activeTab, setActiveTab] = useState("Waradi");
+  const categories = [...new Set(RAJWADA_100_ITEMS.map(item => item.cat))];
 
-  // Filter logic
-  const filteredItems = allMenuItems.filter(item => {
-    if (activeCategory === 'popular') return item.isPopular;
-    return item.category === activeCategory;
-  });
+  // Strictly taking 5 items to fit the specialized 5-column grid
+  const filteredItems = RAJWADA_100_ITEMS
+    .filter(item => item.cat === activeTab)
+    .slice(0, 5);
 
   return (
-    <section id="menu" className="px-6 py-20 bg-[#F3EBF0] min-h-screen">
-      <div className="max-w-6xl mx-auto">
+    /* Standard Website Padding: px-6 for mobile, md:px-12 for tablets, lg:px-24 for desktop */
+    <section className="bg-[#050505] py-24 px-6 md:px-12 lg:px-24 selection:bg-[#FF5722]/30">
+      
+      {/* STANDARD MAX-WIDTH: Matches the MenuBook layout exactly */}
+      <div className="max-w-7xl mx-auto">
         
-        {/* Header & Categories */}
-        <div className="mb-16 text-center">
-          <h2 className="mb-2 text-3xl font-bold text-gray-900 md:text-4xl">Food by category</h2>
-          <p className="mb-10 text-gray-500">Choose a category to filter the menu.</p>
-          
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((cat) => (
-              <CategoryPill 
-              key={cat.id} 
-              {...cat} 
-              isActive={activeCategory === cat.id}
-              onClick={() => setActiveCategory(cat.id)}/>
-            ))}
+        {/* 1. SECTION HEADER */}
+        <div className="text-center mb-20">
+          <span className="text-[#FF5722] text-[10px] tracking-[0.6em] uppercase font-bold mb-4 block opacity-80">
+            Royal Favourites
+          </span>
+          <h2 className="text-4xl md:text-5xl font-['Cinzel_Decorative'] text-white mb-6 tracking-tight">
+            Our <span className="text-[#FF5722]">Speciality</span>
+          </h2>
+          <div className="flex items-center justify-center gap-4">
+            <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#FF5722]/40" />
+            <div className="w-2 h-2 rotate-45 border border-[#FF5722]" />
+            <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#FF5722]/40" />
           </div>
         </div>
 
-        {/* Menu Grid */}
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {filteredItems.length > 0 ? (
-            filteredItems.map((item) => (
-              <MenuItemCard key={item.id} {...item} />
-            ))
-          ) : (
-            <p className="col-span-full py-10 text-center text-gray-500">No items found in this category yet. Coming soon!</p>
-          )}
+        {/* 2. CATEGORY TABS */}
+        <div className="flex overflow-x-auto gap-4 no-scrollbar mb-20 justify-start md:justify-center pb-4">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveTab(cat)}
+              className={`
+                px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 whitespace-nowrap border
+                ${activeTab === cat 
+                  ? 'bg-[#FF5722] border-[#FF5722] text-white shadow-[0_15px_30px_-10px_rgba(255,87,34,0.4)] scale-105' 
+                  : 'border-white/10 text-white/40 hover:text-white hover:border-white/20'
+                }
+              `}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* 3. 5-CARD GRID: Contained within the 7xl margin */}
+        {/* lg:grid-cols-5 forces the cards to be smaller to fit the row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {filteredItems.map((item) => (
+            <div 
+              key={item.id} 
+              className="group bg-[#0a0a0a] rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-[#FF5722]/40 transition-all duration-500 hover:-translate-y-2 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
+            >
+              {/* Compact Image - Height reduced for 'Small Card' feel */}
+              <div className="h-44 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-80 z-10" />
+                <img 
+                  src={`https://source.unsplash.com/600x600/?indian-food,${item.name.replace(/\s+/g, '-')}`} 
+                  alt={item.name} 
+                  className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
+                />
+                <div className="absolute bottom-4 right-4 z-20 text-[#FF5722] font-black text-xl tracking-tighter">
+                  ₹{item.price}
+                </div>
+              </div>
+
+              {/* Compact Text Content */}
+              <div className="p-5 flex-grow flex flex-col">
+                <h3 className="text-[13px] font-bold text-white mb-2 group-hover:text-[#FF5722] transition-colors line-clamp-1 uppercase tracking-widest">
+                  {item.name}
+                </h3>
+                <p className="text-gray-500 text-[11px] leading-relaxed italic mb-6 line-clamp-2 group-hover:text-gray-400 transition-colors">
+                  {item.desc}
+                </p>
+                
+                {/* Minimalist Bottom Bar */}
+                <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
+                  <span className="text-[8px] text-white/20 font-bold uppercase tracking-[0.3em]">Rajwada</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#FF5722]/20 group-hover:bg-[#FF5722] group-hover:shadow-[0_0_8px_#FF5722] transition-all" />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>

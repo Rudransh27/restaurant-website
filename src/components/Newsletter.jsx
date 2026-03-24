@@ -1,29 +1,55 @@
+import React from 'react';
+
 const Newsletter = () => {
   return (
-    <section className="px-6 py-20 bg-gray-50">
-      <div className="max-w-4xl mx-auto">
-        <div
-        className="relative overflow-hidden bg-[#7E3D5D] rounded-3xl shadow-xl px-6 py-10 md:px-14 md:py-12 text-center">
-          <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
-            Stay in the loop with all things American cuisine!
+    /* Standard Website Padding & Dark Theme Background */
+    <section className="px-6 md:px-12 lg:px-24 py-24 bg-[#050505] selection:bg-[#FF5722]/30">
+      
+      {/* Container to match site-wide horizontal alignment */}
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Newsletter Box - Uses a deep gradient and subtle border */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] to-[#111] rounded-[2rem] border border-white/5 shadow-2xl px-6 py-12 md:px-16 md:py-20 text-center">
+          
+          {/* Decorative Background Element */}
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#FF5722]/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#FF5722]/5 rounded-full blur-3xl" />
+
+          {/* Text Content with Cinzel Typography */}
+          <span className="text-[#FF5722] text-[10px] tracking-[0.6em] uppercase font-bold mb-6 block opacity-80">
+            The Inner Circle
+          </span>
+          
+          <h2 className="mb-6 text-3xl md:text-5xl font-['Cinzel_Decorative'] text-white tracking-tight leading-tight max-w-2xl mx-auto">
+            Experience <span className="text-[#FF5722]">Rajwada</span> in your Inbox
           </h2>
-          <p className="mb-8 text-purple-100 opacity-90 max-w-2xl mx-auto">
-            Sign up for our newsletter to receive mouth-watering recipes, exclusive offers, and insider news. Don't miss out on the deliciousness!
+          
+          <p className="mb-10 text-gray-500 italic text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            Join our exclusive list for heritage recipes, royal announcements, and private dining invitations.
           </p>
 
-          {/* Form */}
-          <form className="flex flex-col gap-4 sm:flex-row justify-center max-w-lg mx-auto">
-            <input type="email" placeholder="Your email" 
-            className="grow px-6 py-3 text-gray-800 transition-all bg-white border border-transparent rounded-full focus:outline-none focus:ring-2 focus:ring-purple-300" />
-            <button type="button" 
-            className="px-8 py-3 font-bold text-[#7E3D5D] transition-transform bg-white rounded-full hover:scale-105 hover:bg-gray-100 cursor-pointer" >
-              Sign up
+          {/* Form - Redesigned with custom orange/black contrast */}
+          <form className="flex flex-col gap-4 sm:flex-row justify-center max-w-md mx-auto relative z-10">
+            <input 
+              type="email" 
+              placeholder="Your email address" 
+              className="grow px-8 py-4 text-white transition-all bg-[#050505] border border-white/10 rounded-full focus:outline-none focus:border-[#FF5722]/50 focus:ring-1 focus:ring-[#FF5722]/50 placeholder:text-gray-700" 
+            />
+            <button 
+              type="button" 
+              className="px-10 py-4 font-black uppercase text-[11px] tracking-[0.2em] text-white transition-all bg-[#FF5722] rounded-full hover:bg-[#ff7a52] hover:shadow-[0_10px_20px_-5px_rgba(255,87,34,0.4)] cursor-pointer active:scale-95" 
+            >
+              Subscribe
             </button>
           </form>
 
-          <p className="mt-4 text-xs text-purple-200 opacity-60">
-            No spam, unsubscribe at any time.
+          <p className="mt-8 text-[10px] text-gray-600 uppercase tracking-widest opacity-60">
+            Respecting your privacy since 2024.
           </p>
+
+          {/* Royal Corner Elements to match Gallery and MenuBook */}
+          <div className="absolute top-8 left-8 w-6 h-6 border-t border-l border-[#FF5722]/20" />
+          <div className="absolute bottom-8 right-8 w-6 h-6 border-b border-r border-[#FF5722]/20" />
         </div>
       </div>
     </section>

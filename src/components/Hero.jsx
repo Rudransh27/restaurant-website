@@ -1,5 +1,5 @@
 import Navbar from "./Navbar"
-import heroBg from '../assets/hero-bg.png'
+import heroBg from '../assets/backimg.png'
 import { ArrowRight } from "lucide-react"
 
 const Hero = () => {
@@ -28,14 +28,13 @@ const Hero = () => {
         <div className="max-w-4xl animate-fade-in-up">
           <h1 
           className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl drop-shadow-lg">
-            Experience a Taste of <span className="text-purple-400">Magic</span> with Every Bite
+           Experience the <span className="text-orange-400">Royal Heritage</span>  of Authentic Varadi Cuisine.
           </h1>
           <p className="max-w-2xl mx-auto mb-10 text-lg text-gray-200 drop-shadow-md">
-            At our restaurant, you'll find a wide variety of classic and modern
-            Dishes that will satisfy any craving.
+            Experience the authentic spices and rich culinary heritage of Vidarbha at Hotel Rajwada, Shegaon.
           </p>
           <button 
-          className="group flex items-center gap-3 px-6 py-3 mx-auto font-medium transition-all bg-purple-700 rounded-full cursor-pointer hover:bg-purple-600 hover:scale-105 active:scale-95 shadow-xl shadow-purple-900/20"
+          className="group flex items-center gap-3 px-6 py-3 mx-auto font-medium transition-all bg-orange-700 rounded-full cursor-pointer hover:bg-orange-600 hover:scale-105 active:scale-95 shadow-xl shadow-purple-900/20"
           onClick={(e) => scrollToSection(e, "menu")} >
             Discover now
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
